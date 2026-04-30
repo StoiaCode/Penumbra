@@ -72,7 +72,8 @@ public class PenumbraChangelog : IUiService
 
     private static void Add1_6_1_0(Changelog log)
         => log.NextVersion("Version 1.6.1.0"u8)
-            .RegisterEntry("Penumbra has been updated for patch 7.50 and API 15."u8)
+            .RegisterHighlight("Penumbra has been updated for game version 7.50 and Dalamud API 15."u8)
+            .RegisterEntry("The HDR launch option had to be disabled until a way to make it work more robustly can be found."u8, 1)
             .RegisterHighlight("Added some new features to the mod filesystem:"u8)
             .RegisterEntry("You can now add separator lines to your mod filesystem. You can edit these lines by right-clicking them to choose their color, whether they are sorted among folders or files, and how they are sorted."u8, 1)
             .RegisterEntry("The context menu for folders in the mod filesystem has been slightly edited. Using the 'Edit Folder' sub menu you can now specify individual colors and sort-modes for specific folders only."u8, 1)
