@@ -984,6 +984,7 @@ public sealed class SettingsTab : ITab<TabType>
         if (!RenderTargetHdrEnabler.HdrModeSupported)
             return;
 
+#pragma warning disable CS0162 // Unreachable code detected
         Im.Item.SetNextWidth(Im.Font.CalculateSize("M"u8).X * 5.0f + Im.Style.FrameHeight);
         using (var combo = Im.Combo.Begin("##hdrRenderTarget"u8, _config.HdrRenderTargets ? "HDR"u8 : "SDR"u8))
         {
@@ -1006,6 +1007,7 @@ public sealed class SettingsTab : ITab<TabType>
         LunaStyle.DrawAlignedHelpMarkerLabel("Diffuse Dynamic Range"u8,
             "Set the dynamic range that can be used for diffuse colors in materials without causing visual artifacts.\n"u8
           + "Changing this setting requires a game restart. It also only works if Wait for Plugins on Startup is enabled."u8);
+#pragma warning restore CS0162 // Unreachable code detected
     }
 
     /// <summary> Draw a checkbox for the HTTP API that creates and destroys the web server when toggled. </summary>

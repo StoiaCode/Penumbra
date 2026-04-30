@@ -91,7 +91,7 @@ public readonly struct ModMeta(Mod mod) : ISavable
 
         try
         {
-            var data   = JsonFunctions.ReadUtf8Bytes(metaFile);
+            var data   = JsonFunctions.ReadUtf8Bytes(metaFile, out _);
             var reader = new Utf8JsonReader(data.Span, JsonFunctions.ReaderOptions);
 
             while (reader.Read())
