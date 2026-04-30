@@ -151,7 +151,7 @@ public sealed unsafe partial class RedrawService : IDisposable
     }
 
     public static DrawState* ActorDrawState(IGameObject actor)
-        => (DrawState*)(&((FFXIVClientStructs.FFXIV.Client.Game.Object.GameObject*)actor.Address)->RenderFlags);
+        => (DrawState*)&((FFXIVClientStructs.FFXIV.Client.Game.Object.GameObject*)actor.Address)->RenderFlags;
 
     private static int ObjectTableIndex(IGameObject actor)
         => ((FFXIVClientStructs.FFXIV.Client.Game.Object.GameObject*)actor.Address)->ObjectIndex;
@@ -168,7 +168,7 @@ public sealed unsafe partial class RedrawService : IDisposable
             DisableDraw(actor!);
 
         if (actor is IPlayerCharacter
-         && _objects.GetDalamudObject(tableIndex + 1) is { ObjectKind: ObjectKind.MountType or ObjectKind.Ornament } mountOrOrnament)
+         && _objects.GetDalamudObject(tableIndex + 1) is { ObjectKind: ObjectKind.Mount or ObjectKind.Ornament } mountOrOrnament)
         {
             *ActorDrawState(mountOrOrnament) |= DrawState.Invisibility;
             if (gPose)
@@ -188,7 +188,7 @@ public sealed unsafe partial class RedrawService : IDisposable
             EnableDraw(actor!);
 
         if (actor is IPlayerCharacter
-         && _objects.GetDalamudObject(tableIndex + 1) is { ObjectKind: ObjectKind.MountType or ObjectKind.Ornament } mountOrOrnament)
+         && _objects.GetDalamudObject(tableIndex + 1) is { ObjectKind: ObjectKind.Mount or ObjectKind.Ornament } mountOrOrnament)
         {
             *ActorDrawState(mountOrOrnament) &= ~DrawState.Invisibility;
             if (gPose)

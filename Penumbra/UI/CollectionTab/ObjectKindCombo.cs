@@ -11,7 +11,7 @@ public sealed class ObjectKindCombo(params IReadOnlyList<ObjectKind> kinds) : Si
             ObjectKind.None      => new StringU8("Unknown"u8),
             ObjectKind.BattleNpc => new StringU8("Battle NPC"u8),
             ObjectKind.EventNpc  => new StringU8("Event NPC"u8),
-            ObjectKind.MountType => new StringU8("Mount"u8),
+            ObjectKind.Mount     => new StringU8("Mount"u8),
             ObjectKind.Companion => new StringU8("Companion"u8),
             ObjectKind.Ornament  => new StringU8("Accessory"u8),
             _                    => new StringU8($"{value}"),

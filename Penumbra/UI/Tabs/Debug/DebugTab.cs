@@ -1,4 +1,6 @@
 using Dalamud.Interface.Colors;
+using Dalamud.Interface.Windowing;
+using Dalamud.Plugin;
 using Dalamud.Plugin.Services;
 using FFXIVClientStructs.FFXIV.Client.Game.Character;
 using FFXIVClientStructs.FFXIV.Client.Game.Group;
@@ -32,6 +34,7 @@ using Penumbra.String;
 using Penumbra.String.Classes;
 using Penumbra.UI.Classes;
 using Penumbra.UI.FileEditing.Materials;
+using Window = Luna.Window;
 
 namespace Penumbra.UI.Tabs.Debug;
 
@@ -329,7 +332,7 @@ public sealed class DebugTab : Window, ITab<TabType>
                     {
                         var modTags = mod.ModTags.ToArray();
                         // Delete all mod tags first.
-                        while(mod.ModTags.Count > 0)
+                        while (mod.ModTags.Count > 0)
                             _modManager.DataEditor.ChangeModTag(mod, 0, string.Empty);
                         // Add all mod tags to local tags. Duplicates or conflicts are not possible.
                         foreach (var tag in modTags)
@@ -794,30 +797,13 @@ public sealed class DebugTab : Window, ITab<TabType>
         DrawChangedItemTest();
     }
 
-    private string  _filePath = string.Empty;
-    private byte[]? _fileData;
-
     private void DrawFileTest()
     {
         using var node = Im.Tree.Node("Game File Test"u8);
         if (!node)
             return;
 
-        if (Im.Input.Text("##Path"u8, ref _filePath, "File Path..."u8))
-            _fileData = _dataManager.GetFile(_filePath)?.Data;
-
-        using (Im.Group())
-        {
-            Im.Text("Exists"u8);
-            Im.Text("File Size"u8);
-        }
-
-        Im.Line.SameInner();
-        using (Im.Group())
-        {
-            Im.Text($"{_fileData is not null}");
-            Im.Text($"{_fileData?.Length ?? 0}");
-        }
+        PenumbraErrorWindow.DrawFileTest(_dataManager);
     }
 
     private          string                                    _changedItemPath = string.Empty;

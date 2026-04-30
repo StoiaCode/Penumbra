@@ -19,7 +19,7 @@ public class IndividualAssignmentUi : IDisposable
         ObjectKind.BattleNpc,
         ObjectKind.EventNpc,
         ObjectKind.Companion,
-        ObjectKind.MountType,
+        ObjectKind.Mount,
         ObjectKind.Ornament);
 
     private WorldCombo _worldCombo     = null!;
@@ -112,7 +112,7 @@ public class IndividualAssignmentUi : IDisposable
         {
             ObjectKind.BattleNpc => _bnpcCombo,
             ObjectKind.EventNpc  => _enpcCombo,
-            ObjectKind.MountType => _mountCombo,
+            ObjectKind.Mount     => _mountCombo,
             ObjectKind.Companion => _companionCombo,
             ObjectKind.Ornament  => _ornamentCombo,
             _                    => throw new NotImplementedException(),

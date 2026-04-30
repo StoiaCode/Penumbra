@@ -981,6 +981,9 @@ public sealed class SettingsTab : ITab<TabType>
 
     private void DrawHdrRenderTargets()
     {
+        if (!RenderTargetHdrEnabler.HdrModeSupported)
+            return;
+
         Im.Item.SetNextWidth(Im.Font.CalculateSize("M"u8).X * 5.0f + Im.Style.FrameHeight);
         using (var combo = Im.Combo.Begin("##hdrRenderTarget"u8, _config.HdrRenderTargets ? "HDR"u8 : "SDR"u8))
         {
