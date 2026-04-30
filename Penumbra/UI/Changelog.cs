@@ -65,12 +65,21 @@ public class PenumbraChangelog : IUiService
         Add1_5_1_0(Changelog);
         AddDummy(Changelog);
         Add1_6_0_0(Changelog);
+        Add1_6_1_0(Changelog);
     }
 
     #region Changelogs
 
     private static void Add1_6_1_0(Changelog log)
         => log.NextVersion("Version 1.6.1.0"u8)
+            .RegisterEntry("Penumbra has been updated for patch 7.50 and API 15."u8)
+            .RegisterHighlight("Added some new features to the mod filesystem:"u8)
+            .RegisterEntry("You can now add separator lines to your mod filesystem. You can edit these lines by right-clicking them to choose their color, whether they are sorted among folders or files, and how they are sorted."u8, 1)
+            .RegisterEntry("The context menu for folders in the mod filesystem has been slightly edited. Using the 'Edit Folder' sub menu you can now specify individual colors and sort-modes for specific folders only."u8, 1)
+            .RegisterEntry("Importing archives now replaces invalid symbols with underscores instead of removing them."u8)
+            .RegisterEntry("Made the new meta edit tabs more obviously tabs."u8)
+            .RegisterEntry("Fixed some inverted caret icons."u8)
+            .RegisterEntry("Fixed some Meta Edit labels."u8)
             .RegisterEntry("Anything related to 'forbidden files' has been renamed to 'reserved files' to make it sound less scary."u8);
 
     private static void Add1_6_0_0(Changelog log)
